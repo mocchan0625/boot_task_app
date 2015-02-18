@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h1>プロジェクト一覧</h1>
+</div>
+
+<table class="table table-striped">
+<ul>
+  <% @projects.each do |p| %>
+  <li>
+    <%= link_to p.title, project_path(p.id) %>【 (<%= p.tasks.unfinished.count %>/<%= p.tasks.count %>)】
+    <%= link_to '編集', edit_project_path(p.id), class: 'btn btn-default' %>
+    <%= link_to '削除', project_path(p.id), method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: 'btn btn-danger' %>
+  <% end %>
+</ul>
+</table>
+
+<p><%= link_to '新規タスク追加', new_project_path, class: 'btn btn-primary' %></p>

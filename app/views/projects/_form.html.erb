@@ -1,0 +1,21 @@
+<%= form_for @project do |f| %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+
+        <%= f.label :title %>
+      </div>
+      <div class="panel-body">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <% if @project.errors.any? %>
+      <%= @project.errors.messages[:title][0] %>
+      <% end %>
+  </div>
+</div>
+
+<p>
+  <%= f.submit 'プロジェクト作成', class: 'btn btn-success', data: { disable_with: '作成中…' } %>
+</p>
+
+<% end %>
